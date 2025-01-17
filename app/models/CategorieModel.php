@@ -19,7 +19,7 @@ class CategorieModel extends General{
             ->lastInsertId();
     }
 
-    public static function DeleteById(int $id)
+    public static function Delete(int $id)
     {
         $query = "DELETE FROM Categorie WHERE id = :id";
 

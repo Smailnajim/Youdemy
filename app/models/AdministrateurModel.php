@@ -1,12 +1,11 @@
 <?php
-// include_once "./app/models/User.php";
+include_once "./app/models/User.php";
 
-    class EtudiantModel extends UserModel {
-
-
+    class AdministrateurModel extends UserModel 
+    {
         public function create()
         {
-            $query = "INSERT INTO Etudiant(FirstName, LastName, id_role) VALUES (:FirstName, :LastName, :id_role)";
+            $query = "INSERT INTO Administrateur(FirstName, LastName, id_role) VALUES (:FirstName, :LastName, :id_role)";
             $stmt = Database::getInstance()->getConnection()->prepare($query);
             $stmt->bindParam(':FirstName', $this->Firstname);
             $stmt->bindParam(':LastName', $this->Lastname);
@@ -18,7 +17,7 @@
     
         public static function delete($id)
         {
-            $query = "DELETE FROM Etudiant WHERE id = :id";
+            $query = "DELETE FROM Administrateur WHERE id = :id";
             $stmt = Database::getInstance()->getConnection()->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
@@ -27,7 +26,7 @@
     
         public static function update($id, $Firstname, $Lastname, $id_role)
         {
-            $query = "UPDATE Etudiant SET Firstname = :Firstname, Lastname = :Lastname, id_role = :id_role WHERE id = :id";
+            $query = "UPDATE Administrateur SET Firstname = :Firstname, Lastname = :Lastname, id_role = :id_role WHERE id = :id";
             $stmt = Database::getInstance()->getConnection()->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':FirstName', $Firstname);
@@ -39,7 +38,7 @@
     
         public static function read(int $id): EtudiantModel
         {
-            $query = "SELECT * FROM Etudiant WHERE id = :id";
+            $query = "SELECT * FROM Administrateur WHERE id = :id";
             $stmt = Database::getInstance()->getConnection()->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->execute();

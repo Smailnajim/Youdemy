@@ -8,9 +8,9 @@ class EnseignantModel extends UserModel{
 
 
 
-    public function createCours(string $titre, string $description, string $video, string $document, array $tag): Cours
+    public function createCours(string $titre, string $description, string $video, string $document, array $tags, EnseignantModel $enseignant, CategorieModel $categorie): Cours
     {
-        $Lastcours = Cours::createCours($titre, $description, $video, $document, $tag);
+        $Lastcours = Cours::createCours($titre, $description, $video, $document, $tags, $enseignant, $categorie, $enseignant, $categorie);
         $this->courses [] = $Lastcours;
         return $Lastcours;
     }

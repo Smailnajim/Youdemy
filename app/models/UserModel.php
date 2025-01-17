@@ -5,15 +5,17 @@ class UserModel{
     protected int $id;
     protected string $Firstname;
     protected string $Lastname;
+    protected string $email;
     protected RoleModel $role;
     protected string $mode;
     protected  $courses = [];
     
 
 
-    public function __construct(string $Firstname, string $Lastname){
+    public function __construct(string $Firstname, string $Lastname, string $email){
         $this->Firstname = $Firstname;
         $this->Lastname = $Lastname;
+        $this->Lastname = $email;
 
     }
 
@@ -42,9 +44,18 @@ class UserModel{
         return $this->mode;
     }
 
+    public function getemail(): string
+    {
+        return $this->email;
+    }
 
 
 
+
+    public function setemail(string $email)
+    {
+        $this->Firstname = $email;
+    }
 
     public function setFirstname(string $Firstname)
     {
@@ -74,50 +85,4 @@ class UserModel{
         }
     }
 
-
-
-    public function create()
-        {
-            $query = "INSERT INTO User(FirstName, LastName) VALUES (:FirstName, :LastName)";
-            $stmt = Database::getInstance()->getConnection()->prepare($query);
-            $stmt->bindParam(':FirstName', $this->Firstname);
-            $stmt->bindParam(':LastName', $this->Lastname);
-            $stmt->execute();
-            $this->id = Database::getInstance()->getConnection()->lastInsertId();
-
-        }
-    
-        public static function delete($id)
-        {
-            $query = "DELETE FROM User WHERE id = :id";
-            $stmt = Database::getInstance()->getConnection()->prepare($query);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-
-        }
-    
-
-        public static function update($id, $Firstname, $Lastname, $id_role)
-        {
-            $query = "UPDATE User SET Firstname = :Firstname, Lastname = :Lastname WHERE id = :id";
-            $stmt = Database::getInstance()->getConnection()->prepare($query);
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':FirstName', $Firstname);
-            $stmt->bindParam(':LastName', $Lastname);
-            $stmt->execute();
-    
-        }
-    
-        public static function read(int $id): EtudiantModel
-        {
-            $query = "SELECT * FROM User WHERE id = :id";
-            $stmt = Database::getInstance()->getConnection()->prepare($query);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-
-            if($stmt->fetch()->mode != "newPerson")
-            return $stmt->fetch();
-
-        }
 }

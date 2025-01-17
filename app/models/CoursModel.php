@@ -13,19 +13,21 @@ class Cours{
 
     
 
-    private function __construct(string $titre, string $description, string $video, string $document, array $tags){
+    private function __construct(string $titre, string $description, string $video, string $document, array $tags, EnseignantModel $enseignant, CategorieModel $categorie){
         $this->titre = $titre;
         $this->description = $description;
         $this->video = $video;
         $this->document = $document;
         foreach($tags as $tag)
             $this->tag[] = $tag;
+        $this->enseignant = $enseignant;
+        $this->categorie = $categorie;
 
     }
 
-    public static function createCours(string $titre, string $description, string $video, string $document, array $tag): self
+    public static function createCours(string $titre, string $description, string $video, string $document, array $tags, EnseignantModel $enseignant, CategorieModel $categorie): self
     {
-        return new self($titre, $description, $video, $document, $tag);
+        return new self($titre, $description, $video, $document, $tags, $enseignant, $categorie);
     } 
     
     public function gettitre(): string
@@ -107,17 +109,16 @@ class Cours{
     // create at database
     public function create()
     {
-        $querty = "INSERT INTO Cours (titre, description, video, document, id_Categorie) VALUES (:titre, :description, :video, :document, :id_Categorie)";
+        $querty = "INSERT INTO Cours (titre, description, video, document, id_Categorie, id_enseignant) VALUES (:titre, :description, :video, :document, :id_Categorie, :id_enseignant)";
         $stmt = Database::getInstance()->getConnection()->prepare($querty);
 
         $stmt->bindParam(":document", $this->document);
         $stmt->bindParam(":video", $this->video);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":titre", $this->titre);
-        $stmt->bindParam(":id_Categorie", $this->categorie->);
-
+        $stmt->bindParam(":id_Categorie", $this->categorie->getId());
+        $stmt->bindParam(":id_enseignant", $this->enseignant->getId());
         $stmt->execute();
-
         $this->id = Database::getInstance()->getConnection()->lastInsertId();
     }
 
@@ -128,7 +129,6 @@ class Cours{
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
-
     public static function update($id, $titre, $description, $video, $document)
     {
         $query = "UPDATE Cours SET titre = :titre, description = :description, video = :video, document = :document WHERE id = :id";
@@ -138,12 +138,11 @@ class Cours{
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":titre", $titre);
         $stmt->execute();
-
     }
 
-    public static function read(int $idStart, int $idEnd)
+    public static function read(int $id)
     {
-        $query = "SELECT * FROM Cours WHERE id >= :idStart AND id <= :idEnd";
+        $query = "SELECT * FROM Cours WHERE id :id";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();

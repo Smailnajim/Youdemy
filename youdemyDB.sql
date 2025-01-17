@@ -8,6 +8,7 @@ CREATE TABLE Enseignant (
   FirstName varchar(100) NOT NULL,
   LastName varchar(100) NOT NULL,
   id_role int NOT NULL,
+  email varchar(100) NOT NULL,
   Foreign Key (id_role) REFERENCES Role(id)
 );
 
@@ -15,6 +16,7 @@ CREATE TABLE Etudiant (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   FirstName varchar(100) NOT NULL,
   LastName varchar(100) NOT NULL,
+  email varchar(100) NOT NULL,
   id_role int NOT NULL,
   Foreign Key (id_role) REFERENCES Role(id)
 );

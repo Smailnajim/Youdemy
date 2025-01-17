@@ -5,6 +5,7 @@ class UserModel{
     protected int $id;
     protected string $Firstname;
     protected string $Lastname;
+    protected string $email;
     protected RoleModel $role;
     protected string $mode;
     protected  $courses = [];

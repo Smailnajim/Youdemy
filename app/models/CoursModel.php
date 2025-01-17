@@ -25,9 +25,9 @@ class Cours{
 
     }
 
-    public static function createCours(string $titre, string $description, string $video, string $document, array $tag): self
+    public static function createCours(string $titre, string $description, string $video, string $document, array $tags, EnseignantModel $enseignant, CategorieModel $categorie): self
     {
-        return new self($titre, $description, $video, $document, $tag);
+        return new self($titre, $description, $video, $document, $tags, $enseignant, $categorie);
     } 
     
     public function gettitre(): string

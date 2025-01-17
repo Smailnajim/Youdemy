@@ -12,9 +12,10 @@ class UserModel{
     
 
 
-    public function __construct(string $Firstname, string $Lastname){
+    public function __construct(string $Firstname, string $Lastname, string $email){
         $this->Firstname = $Firstname;
         $this->Lastname = $Lastname;
+        $this->Lastname = $email;
 
     }
 
@@ -43,9 +44,18 @@ class UserModel{
         return $this->mode;
     }
 
+    public function getemail(): string
+    {
+        return $this->email;
+    }
 
 
 
+
+    public function setemail(string $email)
+    {
+        $this->Firstname = $email;
+    }
 
     public function setFirstname(string $Firstname)
     {

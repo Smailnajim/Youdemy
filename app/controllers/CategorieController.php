@@ -2,22 +2,22 @@
 
 class CategorieController
     {
-        public function create(CategorieModel $Categorie)
+        public function create_crud(CategorieModel $Categorie)
         {
             $Categorie->create();
         }
 
-        public function delete($id)
+        public function delete_crud($id)
         {
             CategorieModel::delete($id);
         }
 
-        public function update($id, $titre, $description, $video, $document)
+        public function update_crud($id, $titre, $description, $video, $document)
         {
             CategorieModel::update($id, $titre, $description, $video, $document);
         }
 
-        public function read($idS, $idF)
+        public function read_crud($idS, $idF)
         {
             CategorieModel::read($idS, $idF );
         }

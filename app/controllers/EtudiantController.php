@@ -1,5 +1,5 @@
 <?php
-    class EtudiantModel
+    class RoleController
     {
         public function create(RoleModel $Tag)
         {

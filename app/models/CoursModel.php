@@ -140,9 +140,9 @@ class Cours{
         $stmt->execute();
     }
 
-    public static function read(int $idStart, int $idEnd)
+    public static function read(int $id)
     {
-        $query = "SELECT * FROM Cours WHERE id >= :idStart AND id <= :idEnd";
+        $query = "SELECT * FROM Cours WHERE id :id";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();

@@ -1,9 +1,9 @@
 <?php
-    class RoleController
+    class EnseignantController
     {
-        public function create(RoleModel $Tag)
+        public function create(EnseignantModel $Enseignant)
         {
-            $Tag->create();
+            $Enseignant->create();
         }
 
         public function delete($id)

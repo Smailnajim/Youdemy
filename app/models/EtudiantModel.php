@@ -4,11 +4,6 @@
     class EtudiantModel extends UserModel {
 
 
-        // public function InscriptionUnCours(Cours $cours)
-        // {
-        //     $this->courses [] = $cours;
-        // }
-
         public function create()
         {
             $query = "INSERT INTO Etudiant(FirstName, LastName, id_role) VALUES (:FirstName, :LastName, :id_role)";

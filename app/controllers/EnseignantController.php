@@ -1,9 +1,9 @@
 <?php
     class EnseignantController
     {
-        public function createEnseignant($Firstname, $Lastname, $email):EnseignantModel
+        public function createEnseignant($Firstname, $Lastname, $email, RoleModel $role):EnseignantModel
         {
-            $techer = new EnseignantModel($Firstname, $Lastname, $email);
+            $techer = new EnseignantModel($Firstname, $Lastname, $email, $role);
             return $techer;
         }
 

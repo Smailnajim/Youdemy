@@ -1,9 +1,18 @@
 <?php
     class RoleController
     {
-        public function create_crud(RoleModel $Tag)
+
+        public function createModel($name): RoleModel
         {
-            $Tag->create();
+            $role = new RoleModel();
+            $role->setname($name);
+            $role->create();//for get id
+            return $role;
+        }
+
+        public function create_crud(RoleModel $role)
+        {
+            $role->create();
         }
 
         public function delete_crud($id)

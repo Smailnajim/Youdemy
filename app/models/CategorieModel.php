@@ -5,6 +5,8 @@ class CategorieModel extends General{
 
     public function create()
     {
+
+        echo"-------------start--------------create---------------CategorieModel";
         $query = "INSERT INTO Categorie (name) VALUES(:name)";
 
         $stmt = DataBase::getInstance()->getConnection()->prepare($query);

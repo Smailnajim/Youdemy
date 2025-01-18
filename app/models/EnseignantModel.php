@@ -19,13 +19,17 @@ class EnseignantModel extends UserModel{
 
     public function create()
     {
-        $query = "INSERT INTO Enseignant(FirstName, LastName) VALUES (:FirstName, :LastName, :email)";
+        $query = "INSERT INTO Enseignant(FirstName, LastName, email, id_role) VALUES (:FirstName, :LastName, :email, :id_role)";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(':FirstName', $this->Firstname);
         $stmt->bindParam(':LastName', $this->Lastname);
-        $stmt->bindParam(':LastName', $this->email);
+        $stmt->bindParam(':email', $this->email);
+        echo "___----------------id---".$this->role->getid();
+        $id = $this->role->getid();
+        $stmt->bindParam(':id_role', $id);
         $stmt->execute();
         $this->id = Database::getInstance()->getConnection()->lastInsertId();
+
     }
 
     public static function delete($id)
@@ -71,7 +75,6 @@ class EnseignantModel extends UserModel{
         $stmt->bindParam(':email', $email);
         $stmt->execute();
     }
-
 
     public static function read(int $id): EnseignantModel
     {

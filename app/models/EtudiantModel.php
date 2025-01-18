@@ -15,7 +15,7 @@
             $this->id = Database::getInstance()->getConnection()->lastInsertId();
 
         }
-    
+        
         public static function delete($id)
         {
             $query = "DELETE FROM Etudiant WHERE id = :id";

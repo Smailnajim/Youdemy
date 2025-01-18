@@ -12,10 +12,11 @@ class UserModel{
     
 
 
-    public function __construct(string $Firstname, string $Lastname, string $email){
+    public function __construct(string $Firstname, string $Lastname, string $email, RoleModel $role){
         $this->Firstname = $Firstname;
         $this->Lastname = $Lastname;
         $this->email = $email;
+        $this->role = $role;
 
     }
 
@@ -84,5 +85,6 @@ class UserModel{
             
         }
     }
+
 
 }

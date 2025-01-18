@@ -15,7 +15,7 @@ class UserModel{
     public function __construct(string $Firstname, string $Lastname, string $email){
         $this->Firstname = $Firstname;
         $this->Lastname = $Lastname;
-        $this->Lastname = $email;
+        $this->email = $email;
 
     }
 

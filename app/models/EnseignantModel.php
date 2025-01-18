@@ -19,10 +19,11 @@ class EnseignantModel extends UserModel{
 
     public function create()
     {
-        $query = "INSERT INTO Enseignant(FirstName, LastName) VALUES (:FirstName, :LastName)";
+        $query = "INSERT INTO Enseignant(FirstName, LastName) VALUES (:FirstName, :LastName, :email)";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(':FirstName', $this->Firstname);
         $stmt->bindParam(':LastName', $this->Lastname);
+        $stmt->bindParam(':LastName', $this->email);
         $stmt->execute();
         $this->id = Database::getInstance()->getConnection()->lastInsertId();
     }
@@ -35,16 +36,42 @@ class EnseignantModel extends UserModel{
         $stmt->execute();
     }
 
-    public static function update($id, $Firstname, $Lastname)
+        // updet all 
+    public static function update($id, $Firstname, $Lastname, $email)
     {
-        $query = "UPDATE Enseignant SET Firstname = :Firstname, Lastname = :Lastname WHERE id = :id";
+        $query = "UPDATE Enseignant SET Firstname = :Firstname, Lastname = :Lastname, email = :email WHERE id = :id";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':FirstName', $Firstname);
         $stmt->bindParam(':LastName', $Lastname);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
-
     }
+    public static function updateFirstName($id, $Firstname)
+    {
+        $query = "UPDATE Enseignant SET Firstname = :Firstname WHERE id = :id";
+        $stmt = Database::getInstance()->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':FirstName', $Firstname);
+        $stmt->execute();
+    }
+    public static function updateLastname($id, $Lastname)
+    {
+        $query = "UPDATE Enseignant SET Lastname = :Lastname WHERE id = :id";
+        $stmt = Database::getInstance()->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':LastName', $Lastname);
+        $stmt->execute();
+    }
+    public static function updateEmail($id, $email)
+    {
+        $query = "UPDATE Enseignant SET email = :email WHERE id = :id";
+        $stmt = Database::getInstance()->getConnection()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+    }
+
 
     public static function read(int $id): EnseignantModel
     {

@@ -1,23 +1,23 @@
 <?php
-    class RoleController
+    class EtudiantController
     {
-        public function create_crud(RoleModel $Tag)
+        public function create_crud(EtudiantModel $Tag)
         {
             $Tag->create();
         }
 
         public function delete_crud($id)
         {
-            RoleModel::delete($id);
+            EtudiantModel::delete($id);
         }
 
         public function update_crud($id, $titre, $description, $video, $document)
         {
-            RoleModel::update($id, $titre, $description, $video, $document);
+            EtudiantModel::update($id, $titre, $description, $video, $document);
         }
 
         public function read_crud($id)
         {
-            RoleModel::read($id);
+            EtudiantModel::read($id);
         }
     }

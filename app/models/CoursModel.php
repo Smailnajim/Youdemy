@@ -11,8 +11,6 @@ class Cours{
     private array $tag = [];
 
 
-    
-
     private function __construct(string $titre, string $description, string $video, string $document, array $tags, EnseignantModel $enseignant, CategorieModel $categorie){
         $this->titre = $titre;
         $this->description = $description;
@@ -116,8 +114,10 @@ class Cours{
         $stmt->bindParam(":video", $this->video);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":titre", $this->titre);
-        $stmt->bindParam(":id_Categorie", $this->categorie->getId());
-        $stmt->bindParam(":id_enseignant", $this->enseignant->getId());
+        $id = $this->categorie->getId();
+        $stmt->bindParam(":id_Categorie", $id);
+        $id2 = $this->enseignant->getId();
+        $stmt->bindParam(":id_enseignant", $id2);
         $stmt->execute();
         $this->id = Database::getInstance()->getConnection()->lastInsertId();
     }

@@ -2,6 +2,14 @@
 
 class CategorieController
     {
+        public function createModel($name): CategorieModel
+        {
+            $role = new CategorieModel();
+            $role->setname($name);
+            $role->create();//for get id
+            return $role;
+        }
+
         public function create_crud(CategorieModel $Categorie)
         {
             $Categorie->create();

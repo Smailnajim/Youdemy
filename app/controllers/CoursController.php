@@ -17,8 +17,13 @@ class CoursController
             Cours::update($id, $titre, $description, $video, $document);
         }
 
-        public function read_crud($idS, $idF)
+        public function read_crud($id)
         {
-            Cours::read($idS, $idF );
+            return Cours::read($id);
+        }
+
+        public function readAll_crud()
+        {
+            return Cours::readAll();
         }
     }

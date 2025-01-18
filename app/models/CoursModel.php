@@ -142,11 +142,20 @@ class Cours{
 
     public static function read(int $id)
     {
-        $query = "SELECT * FROM Cours WHERE id :id";
+        $query = "SELECT * FROM Cours WHERE id = :id";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Cours');
-        return $stmt->fetchAll();
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'Cours');
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function readAll()
+    {
+        $query = "SELECT * FROM Cours";
+        $stmt = Database::getInstance()->getConnection()->prepare($query);
+        $stmt->execute();
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'Cours');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -1,21 +1,32 @@
 <?php
 
-    include_once "./../app/forms/LoginModel.php";
+include_once "./../app/core/DataBase.php";
+    include_once "./../app/forms/loginForm.php";
+    include_once "./../app/controllers/EnseignantController.php";
+    include_once "./../app/models/UserModel.php";
+    include_once "./../app/models/EnseignantModel.php";
+    
 
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
         $form = new loginForm($_POST['FirstName'], $_POST['LastName'], $_POST['email'], $_POST['role']);
-    else
-        header();
+    else{
+        header("Location: pageLogin.php");
+        exit;
+    }
+    
+    echo $_POST['role'];
 
 
-
+    var_dump($form);
 
     switch($form->role)
     {
         case 'Enseignant':
-            readByFormLpogin_crud($form);
+            $controller = new EnseignantController();
+            echo '--------------0';
+            $controller->readByFormLpogin_crud($form);
             break;
 
         case 'Etudiant':

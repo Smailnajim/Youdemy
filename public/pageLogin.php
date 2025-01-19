@@ -66,8 +66,9 @@
         <button class="login-button" type="submit">submit</button>
         <?php
         } catch(PDOException $e) {
-            affichAlert($e->getMessage())
-        } ?>
+            affichAlert($e->getMessage());
+        } 
+        ?>
 
         <h5>Don't have an acont ? <a href="#" class="Register">Register</a></h5>
     </form>

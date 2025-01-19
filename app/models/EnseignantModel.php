@@ -2,6 +2,7 @@
 // include_once "./User.php";
 // include_once "./Cours.php";
 
+
 class EnseignantModel extends UserModel{
     // private $coursesOnCour = [];
     // private $nametable = "Enseignant";
@@ -88,7 +89,7 @@ class EnseignantModel extends UserModel{
         return $stmt->fetch();
     }
 
-    public static function readByFormLogin(loginForm $form): EnseignantModel
+    public static function readByFormLogin(loginForm $form)
     {
         $query = "SELECT * FROM Enseignant WHERE FirstName = :FirstName and  LastName = :LastName and  email = :email";
         $stmt = Database::getInstance()->getConnection()->prepare($query);
@@ -97,7 +98,7 @@ class EnseignantModel extends UserModel{
         $stmt->bindParam(':email', $form->email);
         $stmt->execute();
         
-        return $stmt->fetchAll(PDO::FETCH_ASSOC );
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

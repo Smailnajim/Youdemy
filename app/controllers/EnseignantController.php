@@ -1,5 +1,5 @@
 <?php
-    class EnseignantController
+    class EnseignantController 
     {
         public function createEnseignant($Firstname, $Lastname, $email, RoleModel $role):EnseignantModel
         {
@@ -35,6 +35,6 @@
 
         public function readByFormLpogin_crud(loginForm $formLogin)
         {
-            EnseignantModel::readByFormLogin($formLogin);
+            return EnseignantModel::readByFormLogin($formLogin);
         }
     }

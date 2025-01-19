@@ -1,7 +1,7 @@
 <?php
 
 class loginForm{
-    private $FirstName;
+    public $FirstName;
     private $lastName;
     private $email;
 

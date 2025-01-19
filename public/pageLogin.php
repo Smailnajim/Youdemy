@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,19 +18,19 @@
 </head>
 
 <body>
-    <form action="" class="continer">
+    <form action="/Youdemy/public/loginToForm.php" method="post" class="continer ">
         <h1 class="loginTitle">Login</h1>
 
         <section class="userName">
             <!--email-->
             <input type="email" name="email" placeholder="email" required />
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-envelope"></i>
         </section>
 
         <section class="userName">
             <!--First name-->
             <input type="text" name="FirstName" placeholder="First Name" required />
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-regular fa-user"></i>
         </section>
 
         <section class="userName">
@@ -38,13 +39,11 @@
             <i class="fa-solid fa-user"></i>
         </section>
 
-        
-
-        <section class="password">
-            <!--password-->
+        <!-- <section class="password">
+            !--password--
             <input type="password" name="userPassword" placeholder="password" required />
             <i class="fa-solid fa-lock"></i>
-        </section>
+        </section> -->
 
         <section class="remmeberForget">
             <!--remmeber me && forget password-->
@@ -55,16 +54,18 @@
             <a href="#" class="forg">Forget password</a>
         </section>
 
-        <button class="login-button" type="submit">log in</button>
+        <button class="login-button" type="submit">submit</button>
 
         <h5>Don't have an acont ? <a href="#" class="Register">Register</a></h5>
     </form>
 
+    
+
     <!-- script  -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="js/script.js"></script> -->
 </body>
 </html>

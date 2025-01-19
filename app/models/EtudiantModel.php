@@ -48,4 +48,16 @@
             if($stmt->fetch()->mode != "newPerson")
             return $stmt->fetch();
         }
+
+        public static function readByFormLogin(loginForm $form){
+            $query = "SELECT * FROM Etudiant WHERE FirstName = :FirstName and  LastName = :LastName and  email = :email";
+            $stmt = Database::getInstance()->getConnection()->prepare($query);
+            $stmt->bindParam(':FirstName', $form->FirstName);
+            $stmt->bindParam(':LastName', $form->LastName);
+            $stmt->bindParam(':email', $form->email);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
     }

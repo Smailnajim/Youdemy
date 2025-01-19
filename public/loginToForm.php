@@ -5,7 +5,9 @@ include_once "./../app/core/DataBase.php";
     include_once "./../app/controllers/EnseignantController.php";
     include_once "./../app/models/UserModel.php";
     include_once "./../app/models/EnseignantModel.php";
-    
+
+    include_once "./../app/controllers/EtudiantController.php";
+    include_once "./../app/models/EtudiantModel.php";
 
 
 
@@ -26,11 +28,13 @@ include_once "./../app/core/DataBase.php";
         case 'Enseignant':
             $controller = new EnseignantController();
             echo '--------------0';
-            $controller->readByFormLpogin_crud($form);
+            $user = $controller->readByFormLpogin_crud($form);
             break;
 
         case 'Etudiant':
-            echo $form->FirstName;
+            $controller = new EtudiantController();
+            echo '--------------0';
+            $user = $controller->readByFormLpogin_crud($form);
             break;
 
         case 'Administrateur':

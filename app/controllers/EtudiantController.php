@@ -20,4 +20,9 @@
         {
             EtudiantModel::read($id);
         }
+
+        public function readByFormLpogin_crud(loginForm $formLogin)
+        {
+            return EtudiantModel::readByFormLogin($formLogin);
+        }
     }

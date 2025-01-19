@@ -1,3 +1,12 @@
+<?php 
+    function affichAlert(string $error)
+    {
+        return `<div class="alert alert-danger" role="alert">
+                {$error}
+                </div>`;
+
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +62,12 @@
                 <label for="Enseignant">Enseignant</label>
         </section>
 
+        <?php try{  ?>
         <button class="login-button" type="submit">submit</button>
+        <?php
+        } catch(PDOException $e) {
+            affichAlert($e->getMessage())
+        } ?>
 
         <h5>Don't have an acont ? <a href="#" class="Register">Register</a></h5>
     </form>
@@ -62,9 +76,9 @@
 
     <!-- script  -->
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script> -->
-    <!-- <script src="js/script.js"></script> -->
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -20,21 +20,21 @@
 
         public function delete_crud($id)
         {
-            RoleModel::delete($id);
+            EnseignantModel::delete($id);
         }
 
         public function update_crud($id, $titre, $description, $video, $document)
         {
-            RoleModel::update($id, $titre, $description, $video, $document);
+            EnseignantModel::update($id, $titre, $description, $video, $document);
         }
 
         public function read_crud($id)
         {
-            RoleModel::read($id);
+            EnseignantModel::read($id);
         }
 
-        public function readByFormLpogin_crud($id)
+        public function readByFormLpogin_crud(loginForm $formLogin)
         {
-            RoleModel::read($id);
+            EnseignantModel::readByFormLogin($formLogin);
         }
     }

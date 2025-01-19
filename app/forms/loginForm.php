@@ -2,14 +2,14 @@
 
 class loginForm{
     public $FirstName;
-    public $lastName;
+    public $LastName;
     public $email;
     public $role;
 
     public function __construct(string $FirstName, string $lastName, string $email)
     {
         $this->FirstName = $FirstName;
-        $this->lastName = $lastName;
+        $this->LastName = $lastName;
         $this->email = $email;
     }
 

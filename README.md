@@ -15,3 +15,5 @@
 
 -you have users in db
 -creat form login
+-check if existe in db 
+-if he is new person... (mode) afich page : wait to admin acsebt you

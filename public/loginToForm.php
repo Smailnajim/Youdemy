@@ -15,7 +15,7 @@
     switch($form->role)
     {
         case 'Enseignant':
-            echo $form->FirstName;
+            readByFormLpogin_crud($form);
             break;
 
         case 'Etudiant':

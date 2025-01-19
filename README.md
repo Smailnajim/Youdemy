@@ -9,3 +9,9 @@
     -insert role to techer and create him (shod be in db)
     -create cours
     -create it i
+
+
+## if user in db
+
+-you have users in db
+-creat form login

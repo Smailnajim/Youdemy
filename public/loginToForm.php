@@ -3,20 +3,34 @@
     include_once "./../app/forms/LoginModel.php";
 
 
-    switch($_SERVER["REQUEST_METHOD"])
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+        $form = new loginForm($_POST['FirstName'], $_POST['LastName'], $_POST['email'], $_POST['role']);
+    else
+        header();
+
+
+
+
+    switch($form->role)
     {
-        case 'post':
-        case 'get':
-            $form = new loginForm($_POST['FirstName'], $_POST['LastName'], $_POST['email']);
-
-        case 'get':
-            echo "eror get";
-            break;
-
-        case 'post':
+        case 'Enseignant':
             echo $form->FirstName;
             break;
+
+        case 'Etudiant':
+            echo $form->FirstName;
+            break;
+
+        case 'Administrateur':
+            echo $form->FirstName;
+            break;
+
+        default:
+            echo 'role is undifinde';
+            break;
     }
-    
 
 ?>
+
+

@@ -46,12 +46,11 @@
         </section> -->
 
         <section class="remmeberForget">
-            <!--remmeber me && forget password-->
-            <div class="re">
-                <input type="checkbox" id="Remmeberme" />
-                <label for="Remmeberme">Remmeber me</label>
-            </div>
-            <a href="#" class="forg">Forget password</a>
+                <input type="radio" id="Etudiant" name="role" value="Etudiant"/>
+                <label for="Etudiant">Etudiant</label> <br>
+
+                <input type="radio" id="Enseignant" name="role" value="Enseignant"/>
+                <label for="Enseignant">Enseignant</label>
         </section>
 
         <button class="login-button" type="submit">submit</button>

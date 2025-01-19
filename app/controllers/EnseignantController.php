@@ -32,4 +32,9 @@
         {
             RoleModel::read($id);
         }
+
+        public function readByFormLpogin_crud($id)
+        {
+            RoleModel::read($id);
+        }
     }
